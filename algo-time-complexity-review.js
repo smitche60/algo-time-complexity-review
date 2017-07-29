@@ -1,5 +1,5 @@
 /////////// Prompt 1 ///////////
-/////////// time complexity: 
+/////////// time complexity: Linear
 function findMax(array){
   var max = -Infinity;
   for (var i = 0; i < array.length; i++){
@@ -7,26 +7,26 @@ function findMax(array){
       max = array[i];
     }
   }
-  return max; 
+  return max;
 }
 
 
 /////////// Prompt 2 ///////////
-/////////// time complexity: 
+/////////// time complexity: Linear
 function contains(array, target){
   return array.indexOf(target) > -1;
 }
 
 
 /////////// Prompt 3 ///////////
-/////////// time complexity: 
+/////////// time complexity: Linear
 function partialContains(array, target, start){
   return array.slice(start).indexOf(target) > -1;
 }
 
 
 /////////// Prompt 4 ///////////
-/////////// time complexity: 
+/////////// time complexity: Constant Time
 function square(array){
   for (var i = 0; i < 3; i++){
     array[i] = array[i] * array[i];
@@ -35,7 +35,7 @@ function square(array){
 }
 
 /////////// Prompt 5 ///////////
-/////////// time complexity: 
+/////////// time complexity: Linear
 function repeat(array){
   var repeat = [];
   for (var j = 0; j < 10; j++){
@@ -44,13 +44,13 @@ function repeat(array){
       repeat[j].push(array[i]);
     }
   }
-  return repeat; 
+  return repeat;
 }
-//what if we replace 10 with a parameter? 
+//what if we replace 10 with a parameter? Exponential
 
 
 /////////// Prompt 6 ///////////
-/////////// time complexity: 
+/////////// time complexity:
 function gcf(num1, num2){
   if (num1 > num2){ //this ensures num1 is the smaller number
     var temp = num1;
@@ -67,7 +67,7 @@ function gcf(num1, num2){
 
 
 /////////// Prompt 7 ///////////
-/////////// time complexity: 
+/////////// time complexity:
 function countChar(string){
   var counts = {};
   var currChar, currCharCount;
@@ -88,13 +88,13 @@ function countChar(string){
 
 
 /////////// Prompt 8 ///////////
-/////////// time complexity: 
+/////////// time complexity:
 var factorial = function(num){
   if (num < 0){
     return;
   }
   if (num === 0 || num === 1){
-    return 1; 
+    return 1;
   } else {
     return num * factorial(num-1);
   }
@@ -102,18 +102,18 @@ var factorial = function(num){
 
 
 /////////// Prompt 9 ///////////
-/////////// time complexity: 
+/////////// time complexity:
 function tournament(players){
   var results;
   if (players.length < 3){
     return players[0];
   } else {
-    results = hotPotato(players); 
+    results = hotPotato(players);
     //assume hotPotato is a function where sets of
     //three players are teleported simultaneously
-    //to a room with a potato. at the end of 5 minutes, 
-    //the player in each room holding the potato is the winner 
-    //and all winners get teleported to the results array 
+    //to a room with a potato. at the end of 5 minutes,
+    //the player in each room holding the potato is the winner
+    //and all winners get teleported to the results array
     return tournament(results);
   }
 }
@@ -121,7 +121,7 @@ function tournament(players){
 
 
 /////////// Prompt 10 ///////////
-/////////// time complexity: 
+/////////// time complexity:
 function allPasswords(allowedChars, maxLength){
   var results = [];
 
@@ -142,9 +142,9 @@ function allPasswords(allowedChars, maxLength){
 
 
 /////////// Prompt 11 ///////////
-/////////// time complexity: 
+/////////// time complexity:
 function findColor(quadTree, coordinates){
-  //a quad tree is a tree where each node has 4 children 
+  //a quad tree is a tree where each node has 4 children
   //or no children, usually used to divide a two-dimensional
   //space into coordinates
   //coordinates is an array [xpos, ypos]
@@ -152,16 +152,16 @@ function findColor(quadTree, coordinates){
   if (!Array.isArray(quadTree.color)){
     return quadTree.color;
   } else {
-    var quadrant = findQuadrant(quadTree, coordinates); 
+    var quadrant = findQuadrant(quadTree, coordinates);
     if (quadrant === "NE") {
       return findColor(quadTree.color[0], coordinates);
-    } 
+    }
     if (quadrant === "SE") {
       return findColor(quadTree.color[1], coordinates);
     }
     if (quadrant === "SW") {
       return findColor(quadTree.color[2], coordinates);
-    } 
+    }
     if (quadrant === "NW") {
       return findColor(quadTree.color[3], coordinates);
     }
@@ -189,8 +189,8 @@ function findColor(quadTree, coordinates){
 
 
 /////////// Bonus! ///////////
-/////////// time complexity: 
-//this will require some math to determine 
+/////////// time complexity:
+//this will require some math to determine
 
 function tournamentRedux(players){
   var results = [];
@@ -198,11 +198,11 @@ function tournamentRedux(players){
     return players[0];
   } else {
     for (i = 0; i < players.length; i = i + 3){
-      results.push(hotPotato([players[i], players[i+1], players[i+2]])); 
-      //assume hotPotato is a function where 
-      //the three players at a time must play hot potato for 5 minutes. 
+      results.push(hotPotato([players[i], players[i+1], players[i+2]]));
+      //assume hotPotato is a function where
+      //the three players at a time must play hot potato for 5 minutes.
       //the player in the room holding the potato is the winner
-      //and gets returned from the function 
+      //and gets returned from the function
     }
     return tournamentRedux(results);
   }
